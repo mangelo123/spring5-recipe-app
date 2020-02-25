@@ -1,10 +1,12 @@
 package guru.springframework.service;
 
+import java.util.Set;
+
 import guru.springframework.domain.Recipe;
 
 public interface RecipeService {
 
-	Iterable<Recipe> getRecipes();
+	Set<Recipe> getRecipes();
 
 	Recipe save(Recipe recipe);
 

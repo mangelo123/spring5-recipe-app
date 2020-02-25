@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import guru.springframework.domain.Category;
 import guru.springframework.domain.Difficulty;
@@ -18,7 +19,6 @@ import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repository.CategoryRepository;
 import guru.springframework.repository.RecipeRepository;
 import guru.springframework.repository.UnitOfMeasureRepository;
-
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -34,6 +34,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
     }
