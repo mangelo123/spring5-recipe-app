@@ -1,27 +1,15 @@
 package guru.springframework.service;
 
 import java.util.Optional;
+import java.util.Set;
 
-import org.springframework.stereotype.Service;
-
+import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.domain.UnitOfMeasure;
-import guru.springframework.repository.UnitOfMeasureRepository;
 
-@Service
-public class UnitOfMeasureService {
+public interface UnitOfMeasureService {
 
-	private UnitOfMeasureRepository repo;
+	Set<UnitOfMeasureCommand> listAllUoms();
 
-	public UnitOfMeasureService(UnitOfMeasureRepository repo) {
-		super();
-		this.repo = repo;
-	}
-	
-	public Iterable<UnitOfMeasure> getUnitsOfMeasure() {
-		return repo.findAll();
-	}
-	
-	public Optional<UnitOfMeasure> findByDescription(String description) {
-		return repo.findByDescription(description);
-	}
+	Optional<UnitOfMeasure> findByDescription(String description);
+
 }
